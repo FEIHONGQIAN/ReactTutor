@@ -10,7 +10,6 @@ class EventDemo extends React.Component {
 
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleClear = this.handleClear.bind(this);
-      this.getServerStatus = this.getServerStatus.bind(this);
       this.handleInput = this.handleInput.bind(this);
       this.login = this.login.bind(this);
       this.logout = this.logout.bind(this);
@@ -24,6 +23,39 @@ class EventDemo extends React.Component {
       };
       this.list = [{name: 'Bill Gates', major: 'Computer Science'}, {name: 'Elon Musk', major: 'Computer Science'},
           {name: 'Steve Jobs', major: 'Computer Science'}]
+      this.style1={
+          width:'100%',
+          height:'50px',
+      }
+
+      this.style2={
+          position: 'absolute',
+          color:'cornflowerblue',
+          fontSize:'15px'
+      }
+      this.style3={
+          position: 'relative',
+          left: '50px',
+          color:'black',
+          fontSize:'15px'
+      }
+      this.style4={
+          position: 'absolute',
+          right:'135px',
+          color:'cornflowerblue',
+          fontSize:'15px'
+      }
+      this.style5={
+          position: 'absolute',
+          right:'0px',
+          color:'black',
+          fontSize:'15px'
+      }
+      this.button = {
+          color: "back",
+          background : "lightblue"
+      }
+
   }
 
   componentWillMount() {
@@ -42,9 +74,7 @@ class EventDemo extends React.Component {
             count: 0,
         }));
     }
-    getServerStatus(){
-        return this.state.serverStatus;
-    }
+
     handleInput(value){
       console.log(value);
       this.setState(state =>({
@@ -82,9 +112,12 @@ class EventDemo extends React.Component {
         this.list.forEach((item)=>{
             elements.push(
                 <div>
-                    Name : {item.name}&nbsp;
-                    <a>Major : {item.major}</a>
-                    <hr/>
+                    <div style={{border: '1px solid black'}}>
+                        <span style = {this.style2}>Name: </span>
+                        <span style = {this.style3}>{item.name}</span>
+                        <span style = {this.style4}>Major: </span>
+                        <span style = {this.style5}>{item.major}</span>
+                    </div>
                 </div>
             )
         });
@@ -93,9 +126,10 @@ class EventDemo extends React.Component {
        <div>
            <div>
                <h4>This is a Component Example. </h4>
+               <hr/>
                <p> Server with ID { this.state.serverId }  is { this.state.serverStatus } </p>
                <p> {b} with ID { this.state.serverId }  is { this.state.serverStatus } </p>
-               <p> {b} with ID { this.state.serverId }  is {this.getServerStatus} </p>
+               <p> {b} with ID { this.state.serverId }  is {this.state.serverStatus} </p>
            </div>
 
            <hr/>
@@ -104,8 +138,8 @@ class EventDemo extends React.Component {
                This is a counter: {this.state.count}
                </h4>
                <div>
-                   <button onClick={this.handleSubmit}> Plus </button>
-                   <button onClick={this.handleClear}> Clear </button>
+                   <button style={this.button} onClick={this.handleSubmit}> Plus </button>
+                   <button style={this.button} onClick={this.handleClear}> Clear </button>
                </div>
            </div>
 
@@ -122,8 +156,8 @@ class EventDemo extends React.Component {
                </div>
                {text}
                <div>
-                   <button onClick={this.login}> Login </button>
-                   <button onClick={this.logout}> Logout </button>
+                   <button style={this.button} onClick={this.login}> Login </button>
+                   <button style={this.button} onClick={this.logout}> Logout </button>
                </div>
            </div>
 
@@ -140,14 +174,15 @@ class EventDemo extends React.Component {
                </div>
                {text}
                <div>
-                   <button onClick={this.login}> Login </button>
-                   <button onClick={this.logout}> Logout </button>
+                   <button style={this.button} onClick={this.login}> Login </button>
+                   <button style={this.button} onClick={this.logout}> Logout </button>
                </div>
            </div>
 
            <hr/>
            <div>
-               <div> {elements} </div>
+               <h4>This is the ForLoop</h4>
+               <div style={this.style1}>{elements}</div>
            </div>
        </div>
       );
